@@ -1,0 +1,44 @@
+﻿@page "{link?}"
+@using Bortsevych.Models;
+@using System.Web;
+@model Bortsevych.Pages.ProjectModel
+@{
+
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-header">
+                    <div class="row justify-content-between">
+                        <div class="col-sm-6 col-lg-auto align-self-center h2">@Model.Project?.Title</div>
+                        <div class="col-auto text-muted">
+                            <div class="row justify-content-between">
+                                <div class="col-auto text-start"><p style="margin: 0px">Create At:</p></div>
+                                <div class="col-auto text-end">@Model.Project?.CreateAt.Date.ToString("d")</div>
+                            </div>
+                            <div class="row justify-content-between">
+                                <div class="col-auto text-start"><p style="margin: 0px">Update At:</p></div>
+                                <div class="col-auto text-end">@Model.Project?.UpdateAt.Date.ToString("d")</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="padding-top: 20px">
+                        <div class="col-auto">@Model.Project?.Description</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            @Html.Raw(Model.Project?.HTMLPage)
+                            <div style="height:2000px"></div>
+                            <div id="item-2">dasda</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

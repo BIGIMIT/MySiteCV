@@ -92,15 +92,7 @@ namespace Bortsevych.Data.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("AspNetRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "09wdbsbf-anrg-e7fd-4vds-3hreaf6ea2zf",
-                            Name = "Administrator",
-                            NormalizedName = "ADMINISTRATOR"
-                        });
+                    b.ToTable("AspNetRoles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -190,25 +182,7 @@ namespace Bortsevych.Data.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "1wfw51eg-erah-trah-51sr-tj51ty4jd5t4",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "e7fbbb04-10ef-40b6-a39d-100806e33527",
-                            Email = "administrator@gmail.com",
-                            EmailConfirmed = true,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMINISTRATOR@GMAIL.COM",
-                            NormalizedUserName = "ADMINISTRATOR@GMAIL.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAECZYT6YyjuowKV23f/xExKtHSXAju3CAftlIYPX6Ub+UsdALryUdn9DZIqEdko2chA==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "",
-                            TwoFactorEnabled = false,
-                            UserName = "administrator@gmail.com"
-                        });
+                    b.ToTable("AspNetUsers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -272,14 +246,7 @@ namespace Bortsevych.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "1wfw51eg-erah-trah-51sr-tj51ty4jd5t4",
-                            RoleId = "09wdbsbf-anrg-e7fd-4vds-3hreaf6ea2zf"
-                        });
+                    b.ToTable("AspNetUserRoles");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
