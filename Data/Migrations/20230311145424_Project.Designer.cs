@@ -4,6 +4,7 @@ using Bortsevych.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Bortsevych.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230311145424_Project")]
+    partial class Project
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,18 +57,6 @@ namespace Bortsevych.Data.Migrations
                     b.HasIndex("Title");
 
                     b.ToTable("Projects");
-
-                    b.HasData(
-                        new
-                        {
-                            ID = "54b9f288-9992-4f27-ab2a-a350f25732f1",
-                            CreateAt = new DateTime(2023, 3, 16, 16, 8, 30, 320, DateTimeKind.Local).AddTicks(9966),
-                            Description = "Defolt Descriptiondaw",
-                            HTMLPage = "<h1>Defolt Projectdaw</h1>",
-                            Languages = "Defolt Languagesdaw",
-                            Title = "Defolt Projectdaw",
-                            UpdateAt = new DateTime(2023, 3, 16, 16, 8, 30, 320, DateTimeKind.Local).AddTicks(9969)
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -92,7 +83,7 @@ namespace Bortsevych.Data.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("AspNetRoles");
+                    b.ToTable("AspNetRoles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -182,7 +173,7 @@ namespace Bortsevych.Data.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("AspNetUsers");
+                    b.ToTable("AspNetUsers", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -246,7 +237,7 @@ namespace Bortsevych.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles");
+                    b.ToTable("AspNetUserRoles", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
