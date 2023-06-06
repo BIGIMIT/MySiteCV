@@ -3,74 +3,67 @@
 @using Bortsevych.Models;
 @model Bortsevych.Pages.ProjectsModel
 @{
-    <div class="container">
-        <div class="card" style="">
-            <div class="row">
-                <div class="col">
-                    <img src="/images/ProjectPic.png" class="img-fluid rounded-start" alt="...">
-                </div>
-                <div class="col-md-8">
-                    <div class="card-body">
-                        <h5 class="card-title" style="font-weight: 500">This is a page where you can see my projects and express your opinion.</h5>
-                        <p class="card-text">Some projects I have not finished yet or they will be redone, pay attention to the preface where I talk about this</p>
-                        <div class="align-self-center">
-                            <p class="card-text"><small class="text-muted">Last Update: @Model.LastUpdate.ToString("d")</small></p>
+    <div class="container pt-2">
+        <div class="row">
+            <div class="col">
+                <div class="card bg-blur mb-3">
+                    <div class="row g-0">
+                        <div class="col-md-5 overflow-hidden" style="padding:16px">
+                            <div class="d-none d-lg-block">
+                                <img src="~/img/ProjectsLG.svg" class=" h-auto w-100" alt="...">
+                            </div>
+                            <div class="d-none d-md-block d-lg-none ">
+                                <img src="~/img/ProjectsMD.svg" class=" h-100 w-100" alt="...">
+                            </div>
+                            <div class="d-md-none d-sm-block ">
+                                <img src="~/img/ProjectsSM.svg" class=" h-auto w-100" alt="...">
+                            </div>
+                    
+                   
+                        </div>
+                        <div class="col-md-7 ">
+                            <div class="card-body h-100">
+                                <div class="row h-100 d-flex align-items-baseline">
+                                    <div class="col-12 ">
+                                        <h5 class="h5 text-align-justify">This is a page where you can see my projects and express your opinion.</h5>
+                                    </div>
+                                        <div class="col-12">
+                                        <p class="text-align-justify">Some projects I have not finished yet or they will be redone, pay attention to the preface where I talk about this</p>
+                                    </div>
+                                    <div class="col-12 ">
+                                        <p class="text-end">
+                                            <small class="text-muted ">Last Update: @Model.LastUpdate.ToString("d")</small>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="container" style="padding-top: 20px">
-        <div class="input-group mb-3" style="margin-bottom: 20px !important">
-            <input type="text" class="form-control" placeholder="Eenter language or technology" aria-label="Text input with dropdown button">
-            <button class="btn btn-outline-secondary" type="button">Search</button>
-            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                <span class="visually-hidden">Toggle Dropdown</span>
-            </button>
-            <form class="dropdown-menu dropdown-menu-end p-4">
-                <div class="mb-3">
-                    <label for="exampleDropdownFormEmail2" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleDropdownFormPassword2" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="exampleDropdownFormPassword2" placeholder="Password">
-                </div>
-                <div class="mb-3">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="dropdownCheck2">
-                        <label class="form-check-label" for="dropdownCheck2">
-                            Remember me
-                        </label>
-                    </div>
-                </div>
-                <button type="submit" class="btn btn-primary">Sign in</button>
-            </form>
+        <div class="input-group row mb-3 d-flex justify-content-between">
+            <div class="col w-100">
+                <input type="text" class="form-control" placeholder="Eenter language or technology" aria-label="Text input with dropdown button">
+            </div>
+            <div class="col-auto w-auto text-end">
+                <button class="btn btn-outline-secondary" type="button">Search</button>
+            </div>
         </div>
-    </div>
-
-
-    <div class="container" style="padding-bottom:20px;">
-        <div class="row">
-
+        <div class="row row-cols-1 row-cols-md-2 g-4 mb-3">
             @if (Model.Projects is List<Project>)
             {
-
+                ViewData["countOfCard"] = 6; 
                 int i = Model.Projects.Count;
+                if (i == 1) { ViewData["countOfCard"] = 12; }
                 foreach (Project project in Model.Projects)
                 {
-
-                    if (i == 1) { ViewData["countOfCard"] = 12; }
-                    <div class="col-@ViewData["countOfCard"]">
-                        <div class="card">
+                    <div class="col-md-12 col-xl-@ViewData["countOfCard"]">
+                        <div class="card bg-blur h-100">
                             <div class="card-header">
-                                <div class="row">
-                                    <div class="col-6 text-start">
-                                        @project.Languages
-                                    </div>
-                                    <div class="col-6 text-muted text-end">
+                                <div class="row d-flex justify-content-between">
+                                    <div class="col text-start text-nowrap overflow-hidden">@project.Languages</div>
+                                    <div class="col text-end w-auto">
                                         Last Update:
                                         @{
                                             if ((DateTime.Now.Date - project.UpdateAt.Date).TotalDays == 0)
@@ -90,28 +83,27 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="card-body text-start">
-                                <div class="row">
+                            <div class="card-body text-start ">
+                                <div class="row h-100">
                                     <div class=" col-12 col-sm-9">
-                                        <h5 class="card-title">@project.Title</h5>
-                                        <p class="card-text">@project.Description</p>
+                                        
+                                        <h5 class="card-title  text-nowrap overflow-hidden">
+                                            @project.Title
+                                        </h5>
+                                        <p class="card-text text-nowrap overflow-hidden">
+                                            @project.Description
+                                        </p>
                                     </div>
                                     <div class="text-end col-12 col-sm-3 align-self-center">
-                                        <a asp-page="/Project" asp-route-id="@project?.ID" class="btn btn-primary">More --></a>
-
+                                        <a asp-page="/Project" asp-route-id="@project?.ID" class="btn backgraund-colour border-0 btn-primary">More --></a>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                     i--;
-
                 }
-
             }
-
-
         </div>
     </div>
 

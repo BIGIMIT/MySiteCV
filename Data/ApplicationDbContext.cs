@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace Bortsevych.Data
 {
@@ -18,8 +19,7 @@ namespace Bortsevych.Data
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<IdentityRole>().HasData(
-                new IdentityRole
+            builder.Entity<IdentityRole>().HasData(new IdentityRole
                 {
                     Id = "09wdbsbf-anrg-e7fd-4vds-3hreaf6ea2zf",
                     Name = "Administrator",
@@ -27,8 +27,7 @@ namespace Bortsevych.Data
                 });
 
 #pragma warning disable CS8625 // Cannot convert null literal to non-nullable reference type.
-            builder.Entity<IdentityUser>().HasData(
-                new IdentityUser
+            builder.Entity<IdentityUser>().HasData(new IdentityUser
                 {      
                     Id = "1wfw51eg-erah-trah-51sr-tj51ty4jd5t4",
                     UserName = "administrator@gmail.com",
@@ -39,6 +38,7 @@ namespace Bortsevych.Data
                     PasswordHash = new PasswordHasher<IdentityUser>().HashPassword(null, "Administrator"),
                     SecurityStamp = string.Empty
                 });
+
 #pragma warning restore CS8625 // Cannot convert null literal to non-nullable reference type.
 
             builder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
@@ -47,17 +47,6 @@ namespace Bortsevych.Data
                 UserId = "1wfw51eg-erah-trah-51sr-tj51ty4jd5t4"
             });
 
-            builder.Entity<Project>().HasData(
-                new Project
-                {
-                    ID = Guid.NewGuid().ToString(),
-                    Title = "Defolt Projectdaw",
-                    Description = "Defolt Descriptiondaw",
-                    Languages = "Defolt Languagesdaw",
-                    HTMLPage = "<h1>Defolt Projectdaw</h1>",
-                    CreateAt = DateTime.Now,
-                    UpdateAt = DateTime.Now
-                });
         }
 
     }

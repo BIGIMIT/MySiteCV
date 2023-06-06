@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 
 namespace Bortsevych.Models
@@ -14,7 +15,9 @@ namespace Bortsevych.Models
         public string Description { get; set; } = "";
         public string Languages { get; set; } = "";
         public string HTMLPage { get; set; } = "";
-        public DateTime CreateAt { get; set; } = DateTime.Now;
+        public DateTime CreateAt { get; set; }
         public DateTime UpdateAt { get; set; } = DateTime.Now;
+        public string? UserId { get; set; }
+        public IdentityUser? User { get; set; }
     }
 }

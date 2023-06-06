@@ -1,14 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Bortsevych.Data;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Bortsevych.Pages;
 
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
-
-    public IndexModel(ILogger<IndexModel> logger)
+    private readonly ApplicationDbContext _context;
+    public IndexModel(ApplicationDbContext context)
     {
-        _logger = logger;
+        _context = context;
     }
 
     public void OnGet()

@@ -10,7 +10,7 @@
            data-bs-toggle="dropdown" aria-expanded="false">           
             Account
         </a>
-        <ul class="dropdown-menu dropdown-menu-light">
+        <ul class="dropdown-menu dropdown-menu-dark bg-blur-ul border-0 mt-sm-2">
             @if (SignInManager.IsSignedIn(User))
             {
                 <li class="dropdown-item">
@@ -23,8 +23,8 @@
                 {
                     <li class="dropdown-item">
                         <a class="nav-link text-dark"
-                           asp-area="Admin"
-                           asp-page="/Index"
+                           asp-area=""
+                           asp-page="./Admin/Index"
                        title="Manage">AdminPanel</a>
                     </li>
                 }

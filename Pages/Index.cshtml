@@ -1,10 +1,182 @@
 ﻿@page
+@using Bortsevych.Models;
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
+    Layout = "_Layout";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div class="backgraund d-block border-radius pt-5">
+        <div class="row">
+            <div class="col">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p>
+                            <a class="bortsevych mt-1 mt-md-0" asp-area="" asp-page="/Index">
+                                <span class="" is="type-async" id="type-text"></span>
+                                <span class="blinking-cursor">_</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <p class="text-black">Hi, I'm Viktor Bortsevych, a junior .NET Developer. <br />This website showcases my proficiency in various technologies through my projects.</p>
+                    </div>
+                    <div class="col-12">
+                        <p>
+                            <a class="link-dark text-decoration-none" style="font-family:'Cascadia Code'" asp-area="" asp-page="/Projects" role="button">
+                                All progects -->
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<div class="container">
+    <div class="card bg-blur mb-3">
+        <div class="row g-0">
+            <div class="col-md-5 overflow-hidden" style="padding:16px">
+                <div class="d-block">
+                    <img src="~/img/ProjectsLG.svg" class=" h-auto w-100" alt="...">
+                </div>
+
+
+            </div>
+            <div class="col-md-7 ">
+                <div class="card-body h-100">
+                    <div class="row h-100 d-flex align-items-center">
+                        <div class="col-12 ">
+                            <h5 class="h5 text-align-justify">
+                                About Me:
+                            </h5>
+                        </div>
+                        <div class="col-12">
+                            <p class="text-align-justify">I started my .NET journey in 2022, focusing on web development with ASP.NET. 
+                                Currently studying at PCCI SUITC in Odesa, I plan to continue my education at SUITC. 
+                                During my college years, I gained experience with programming languages like Python, C, C++, C#, Java, JavaScript, and T-SQL. 
+                                Recently, I've been dedicated to expanding my expertise in ASP.NET, EF, and SQL Server.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container pt-1">
+    <div class="card p-3 bg-blur mb-3">
+        <div class="row">
+            <div class="col-12">
+                <div class="row g-0">
+                    <div class="col ">
+                        <div class="card-body h-100">
+                            <div class="row h-100 d-flex align-items-center">
+                                <div class="col-12 p-0 ">
+                                    <h5 class="h5 text-align-justify">
+                                        My technology stack includes:
+                                    </h5>
+                                </div>
+                                <div class="col-12">
+                                    <p class="text-align-justify">
+                                        <div class="row">
+                                            <div class="col-12 col-md-6">
+                                                <ul class="mb-0">
+                                                    <li>Programming Languages: C#</li>
+                                                    <li>Frameworks: ASP.NET, .NET Core</li>
+                                                    <li>Databases: SQL Server</li>
+                                                    <li>ORM: Entity Framework</li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-12 col-md-6">
+                                                <ul class="mb-0">
+                                                    <li>Web Frontend: HTML, CSS, JavaScript, Bootstrap</li>
+                                                    <li>Version Control: Git</li>
+                                                    <li>Development Tools: Visual Studio</li>
+                                                    <li>Operating Systems: Windows</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text-align-justify">
+                    These are some of the technologies I have experience with, and I'm always open to learning new technologies and expanding my skill set.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container pt-1">
+    <div class="card p-3 bg-blur mb-3">
+        <div class="row">
+            <div class="col-12">
+                <div class="row g-0">
+                    <div class="col ">
+                        <div class="card-body h-100">
+                            <div class="row h-100 d-flex align-items-center">
+                                <div class="col-12 p-0 ">
+                                    <h5 class="h5 text-align-justify">
+                                        My recent projects:
+                                    </h5>
+                                </div>
+                                <div class="col-12">
+                                    <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
+                                        <div class="carousel-indicators">
+                                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                                        </div>
+                                        <div class="carousel-inner">
+                                            <div class="carousel-item active d-flex justify-content-center align-items-center">
+                                                <div class="d-none d-lg-block">
+                                                    <img src="~/img/slide-LG.png" class=" h-auto w-100" alt="...">
+                                                </div>
+                                                <div class="d-none d-md-block d-lg-none ">
+                                                    <img src="~/img/slide-MD.png" class=" h-100 w-100" alt="...">
+                                                </div>
+                                                <div class="d-md-none d-sm-block ">
+                                                    <img src="~/img/slide-SM.png" class=" h-auto w-100" alt="...">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Previous</span>
+                                        </button>
+                                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                            <span class="visually-hidden">Next</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-12 pt-3 mb-0">
+                                    <p class="m-0 ">
+                                        <a class="link-dark text-decoration-none" style="font-family:'Cascadia Code'" asp-area="" asp-page="/Projects" role="button">
+                                            All progects -->
+                                        </a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+                                       <div style="height:200 px"></div>

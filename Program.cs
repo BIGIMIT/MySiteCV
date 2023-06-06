@@ -1,20 +1,7 @@
 using Bortsevych.Data;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.DependencyInjection;
->>>>>>>>> Temporary merge branch 2
-using System.Data;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.Extensions.DependencyInjection;
->>>>>>>>> Temporary merge branch 2
-using System.Data;
+
 
 namespace Bortsevych;
 
@@ -96,8 +83,6 @@ public class Program
         app.UseAuthorization();
         
         app.MapRazorPages();
-
-        
 
         app.Run();
     }

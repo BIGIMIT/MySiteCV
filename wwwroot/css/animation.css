@@ -1,0 +1,11 @@
+﻿
+.blinking-cursor {
+    user-select: none;
+    animation: blink 1s steps(2, start) infinite;
+}
+
+@keyframes blink {
+    to {
+        visibility: hidden;
+    }
+}

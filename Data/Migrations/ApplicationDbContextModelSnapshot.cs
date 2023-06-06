@@ -49,23 +49,16 @@ namespace Bortsevych.Data.Migrations
                     b.Property<DateTime>("UpdateAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("ID");
 
                     b.HasIndex("Title");
 
-                    b.ToTable("Projects");
+                    b.HasIndex("UserId");
 
-                    b.HasData(
-                        new
-                        {
-                            ID = "54b9f288-9992-4f27-ab2a-a350f25732f1",
-                            CreateAt = new DateTime(2023, 3, 16, 16, 8, 30, 320, DateTimeKind.Local).AddTicks(9966),
-                            Description = "Defolt Descriptiondaw",
-                            HTMLPage = "<h1>Defolt Projectdaw</h1>",
-                            Languages = "Defolt Languagesdaw",
-                            Title = "Defolt Projectdaw",
-                            UpdateAt = new DateTime(2023, 3, 16, 16, 8, 30, 320, DateTimeKind.Local).AddTicks(9969)
-                        });
+                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -92,7 +85,15 @@ namespace Bortsevych.Data.Migrations
                         .HasDatabaseName("RoleNameIndex")
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
-                    b.ToTable("AspNetRoles");
+                    b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "09wdbsbf-anrg-e7fd-4vds-3hreaf6ea2zf",
+                            Name = "Administrator",
+                            NormalizedName = "ADMINISTRATOR"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -182,7 +183,25 @@ namespace Bortsevych.Data.Migrations
                         .HasDatabaseName("UserNameIndex")
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
-                    b.ToTable("AspNetUsers");
+                    b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "1wfw51eg-erah-trah-51sr-tj51ty4jd5t4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "fc0409e2-430b-4eae-8aae-5a340675464e",
+                            Email = "administrator@gmail.com",
+                            EmailConfirmed = true,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMINISTRATOR@GMAIL.COM",
+                            NormalizedUserName = "ADMINISTRATOR@GMAIL.COM",
+                            PasswordHash = "AQAAAAIAAYagAAAAENODLrVJJ5Qr8Lb06aSHaAxkN5DnHSBMP+gr0GHdd/FFxjCvPpWfXo42xUfH+EPAhA==",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "",
+                            TwoFactorEnabled = false,
+                            UserName = "administrator@gmail.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -246,7 +265,14 @@ namespace Bortsevych.Data.Migrations
 
                     b.HasIndex("RoleId");
 
-                    b.ToTable("AspNetUserRoles");
+                    b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "1wfw51eg-erah-trah-51sr-tj51ty4jd5t4",
+                            RoleId = "09wdbsbf-anrg-e7fd-4vds-3hreaf6ea2zf"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
@@ -268,6 +294,15 @@ namespace Bortsevych.Data.Migrations
                     b.HasKey("UserId", "LoginProvider", "Name");
 
                     b.ToTable("AspNetUserTokens", (string)null);
+                });
+
+            modelBuilder.Entity("Bortsevych.Models.Project", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

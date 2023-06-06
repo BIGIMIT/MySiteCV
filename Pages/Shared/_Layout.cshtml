@@ -3,77 +3,147 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Bortsevych</title>
+    <title>Bortsevych - @ViewData["Title"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/animation.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/Bortsevych.styles.css" asp-append-version="true" />
+
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="fixed-top navbar navbar-expand-md navbar-toggleable-md bg-blur navbar-light mb-3 ">
             <div class="container">
-                <a class="navbar-brand " asp-area="" asp-page="/Index">Bortsevych</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-                        data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex">
-                    <div class="collapse navbar-collapse justify-content-center" id="navbarNavLightDropdown">
-                        <ul class="navbar-nav">
-                            <li class="nav-item">
-                                <a class="nav-link text-dark lineHover" asp-area="" asp-page="/Projects">My projects</a>
-                            </li>
-                        </ul>
-                        <ul class="navbar-nav">
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-dark" href="#" role="button" 
-                                   data-bs-toggle="dropdown" aria-expanded="false">
-                                    Social Networks
-                                </a>
-                                <ul class="dropdown-menu dropdown-menu-light">
-                                    <li class="dropdown-item">
-                                        <a href="https://www.instagram.com/cuz.one/" class="nav-link text-dark">
-                                            <img class="d-inline-block align-top"
-                                                 src="~/img/u_instagram-alt.svg">
-                                            Instagram
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="row">
+                                <div class="col-10 "> 
+                                    @if (Context.Request.Path != "/")
+                                    {
+                                        <a class="navbar-brand mt-1 mt-md-0" asp-area="" asp-page="/Index">
+                                            <partial name="_LogoPartial" />
                                         </a>
-                                    </li>
-                                    <li class="dropdown-item">
-                                        <a href="https://github.com/BIGIMIT" class="nav-link text-dark">
-                                            <img class="d-inline-block align-top"
-                                                    src="~/img/u_github.svg">
-                                            GitHub
-                                        </a>
-                                    </li>
-                                    <li class="dropdown-item">
-                                        <a href="https://t.me/viktorbortsevich" class="nav-link text-dark">
-                                            <img class="d-inline-block align-top"
-                                                 src="~/img/u_telegram.svg">
-                                            Telegram
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <partial name="_LoginPartial" />
+                                    }
+                                </div>
+                                <div class="col-2">
+                                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                                            data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                                            aria-expanded="false" aria-label="Toggle navigation">
+                                        <span class="navbar-toggler-icon"></span>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="navbar-collapse collapse d-lg-inline-flex">
+                                <div class="collapse navbar-collapse justify-content-end justify-content-lg-center" id="navbarNavLightDropdown">
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item">
+                                            <a class="nav-link text-dark lineHover" asp-area="" asp-page="/Projects">My projects</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="navbar-nav">
+                                        <li class="nav-item dropdown ">
+                                            <a class="nav-link dropdown-toggle text-dark" href="#" role="button" 
+                                               data-bs-toggle="dropdown" aria-expanded="false">
+                                                Social Media
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-menu-dark bg-blur-ul mt-sm-2">
+                                                <li class="dropdown-item">
+                                                    <a href="https://www.instagram.com/cuz.one/" target="_blank" class="nav-link text-dark">
+                                                        <img class="  d-inline-block align-top"
+                                                             src="~/img/u_instagram-alt.svg">
+                                                        Instagram
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="https://github.com/BIGIMIT" target="_blank" class="nav-link text-dark">
+                                                        <img class="d-inline-block align-top"
+                                                                src="~/img/u_github.svg">
+                                                        GitHub
+                                                    </a>
+                                                </li>
+                                                <li class="dropdown-item">
+                                                    <a href="https://t.me/viktorbortsevych" target="_blank" class="nav-link text-dark">
+                                                        <img class="d-inline-block align-top"
+                                                             src="~/img/u_telegram.svg">
+                                                        Telegram
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                    <partial name="_LoginPartial" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+
+    @if (Context.Request.Path != "/")
+    {
+        <div class="container">
+            <main role="main" class="pb-3 mainFont">
+
+                @RenderBody()
+            </main>
+        </div>
+    }
+    else{
+        
+        <main role="main" class="pb-3 mainFont">
+
             @RenderBody()
         </main>
-    </div>
+    }
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2023 - Bortsevych - <a asp-area="" asp-page="/Privacy">Privacy</a>
+    <footer class="border-0 bg-blur text-muted footer">
+        <div class="container pt-3">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="row">
+                                <div class="col">
+                                    <p>Quick Links:</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <ul>
+                                        <li><a asp-page="/">Home</a></li>
+                                        <li><a asp-page="/Projects">Projects</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <div class="row">
+                                <div class="col">
+                                    <p>If you have an offer please contact me:</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <ul>
+                                        <li>Email: <a>viktorbortsevych.@@2gmail.com</a></li>
+                                        <li>Telegram: <a href="https://t.me/viktorbortsevych">viktorbortsevych</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </footer>
 
+
+
+    <script src="~/js/animation.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
